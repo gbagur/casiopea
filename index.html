@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<label for="button" id="label">Click the button:</label>
+<button id="button">Click me</button>
+<input type="text" id="textbox" placeholder="Enter text here">
+<input type="text" id="textbox2" placeholder="Enter text here">
+
+
+<script>
+    document.getElementById("button").onclick = function() {}
+        
+    document.getElementById("textbox").value = "hola";
+	
+	fetch('backend.php')
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        if(data.status === "success"){
+            console.log(data.data);
+			document.getElementById("textbox2").value = data.data;
+        }
+    })
+    .catch(function(error) {
+        console.log('Request failed', error)
+    });
+	
+  
+</script>
+
+</body>
+</html>
