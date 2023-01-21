@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html>
+<head>
+<title> Casiopea </title>
+</head>
 <body>
 
-<label for="button" id="label">Click the button:</label>
-<button id="button">Click me</button>
-<input type="text" id="textbox" placeholder="Enter text here">
-<input type="text" id="textbox2" placeholder="Enter text here">
+<h1>Casiopea</h1>
+<h2>Birthdays remainder app</h2>
 
+<h3>First test: Bring data from backend.
+Each click should bring a new data
+</h3>
+<label for="button" id="label">Click the button:</label>
+<button id="button">Get data from backend</button>
+<input type="text" id="textbox" placeholder="">
 
 <script>
-    document.getElementById("button").onclick = function() {}
-        
-    document.getElementById("textbox").value = "hola";
-	
-	fetch('backend.php')
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
-        if(data.status === "success"){
-            console.log(data.data);
-			document.getElementById("textbox2").value = data.data;
-        }
-    })
-    .catch(function(error) {
-        console.log('Request failed', error)
-    });
-	
+    document.getElementById("button").onclick = function() {
+	   	
+		fetch('backend.php')
+		.then(function(response) {
+			return response.json();
+		})
+		.then(function(data) {
+			if(data.status === "success"){
+				console.log(data.data);
+				document.getElementById("textbox").value = data.data;
+			}
+		})
+		.catch(function(error) {
+			console.log('Request failed', error)
+		});
+	}
   
 </script>
 
