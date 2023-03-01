@@ -3,7 +3,7 @@ header("Content-Type: application/json");
 
 $response = array(
     "status" => "success",
-    "data" => "dato del backend"
+    "data" => "hola"
 );
 
 echo json_encode($response);
