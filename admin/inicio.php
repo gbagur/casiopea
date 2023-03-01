@@ -85,7 +85,7 @@ $listadatos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         <div class="card">
         
         <div class="card-header">
-            Birthday 
+            Add / Modify Birthday 
         </div>
         <div class="card-body">
                  
