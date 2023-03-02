@@ -1,11 +1,11 @@
 <?php
 session_start();
-  if(!isset($_SESSION["user"])){
+  if(!isset($_SESSION["sesion"])){
     header("Location: index.php");
   }else{
 
-    if($_SESSION["user"]=="ok"){
-      $nameuser=$_SESSION["nameuser"];
+    if($_SESSION["sesion"]=="ok"){
+      $datos=$_SESSION["sesion"];
     }
   }
 ?>

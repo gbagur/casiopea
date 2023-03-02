@@ -25,7 +25,7 @@
 			</li>
 			
 			<li class="nav-item">
-				<a class="nav-link" href="#">Subscribe </a>
+				<a class="nav-link" href="subscribe.php">Subscribe </a>
 			</li>
 			
 			<li class="nav-item">

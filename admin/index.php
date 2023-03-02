@@ -1,17 +1,40 @@
 <?php 
-session_start();
 
-  if($_POST){
-    if(($_POST["user"]=="Casiopea")&&($_POST["password"]=="1234")){
+if(isset($_POST['btnLogin'])) {?>
+    
+ <?php 
+    include("config/db.php");
+
+    $txtUser=($_POST['user']);
+    $txtPass=($_POST['password']);
+
+    $sentenciaSQL= $conexion->prepare("SELECT * FROM users WHERE user=:user AND password=:password");
+    $sentenciaSQL->bindParam('user',$txtUser,PDO::PARAM_STR);
+    $sentenciaSQL->bindParam('password',$txtPass,PDO::PARAM_STR);
+    $sentenciaSQL->execute();
+    $datos=$sentenciaSQL->fetch(PDO::FETCH_ASSOC);  
+
+    print_r($datos);
+
+    session_start();
+    $_SESSION['sesion']=$datos;
+    
+    $numReg=$sentenciaSQL->rowCount();
+?>    
+  <?php if($numReg>=1) {?>
       
-      $_SESSION["user"]="ok";
-      $_SESSION["nameuser"]="Casiopea";
-      header("Location:inicio.php");
-    }else{
-      $mensaje="Wrong username or password";
+ <?php     echo "Bienvenido";
+      header("Location:inicio.php");?>
+
+<?php    }else{?>
+      
+<?php      $mensaje="User not found- Wrong username or password";
     }
-  }
+
 ?>
+    
+   
+  <?php  } ?>
 
 <!doctype html>
 <html lang="en">
@@ -62,7 +85,9 @@ session_start();
                 </div>
                 
                                
-                <button type="submit" class="btn btn-primary">Sign In</button>
+                <button type="submit" name="btnLogin" class="btn btn-primary">Sign In</button>
+                  
+                
           </form>
       </div>
                 
